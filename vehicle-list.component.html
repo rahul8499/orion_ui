@@ -1,0 +1,181 @@
+<div class="container">
+    <div class="row">
+        <h5 class="page-header">Vehicles
+        <!--    <span class="k-icon k-i-plus-circle icon" routerLink="/admin/add-vehicle" title="Create New Vehicle"></span> -->
+        </h5>
+    </div>
+    <kendo-grid [data]="gridView" [scrollable]="'scrollable'" [height]="475" [pageSize]="size" [skip]="skip" 
+        [pageable]="true" [sortable]="true" filterable="menu" [filter]="filter" 
+        [loading]="loading"
+        (pageChange)="pageChange($event)" (sortChange)="sortChange($event)"  
+        (filterChange)="filterChange($event)"
+        (edit)="editHandler($event)"
+        (remove)="viewHandler($event)">
+
+        <ng-template kendoGridToolbarTemplate>
+            <div class="k-textbox k-grid-search k-display-flex search-header">
+                <span class="k-input-icon">
+                    <span class="k-icon k-i-search"></span>
+                    <i class="fa fa-angle-double-up"></i>
+                </span>
+                <kendo-textbox autocomplete="off" #txtSearchStringInput placeholder="Search..." title="Search..."
+                    class="search-input txtSearchString"></kendo-textbox>
+                     <!-- export Button -->
+                     <button style="margin-left: 20px;" type="button" kendoGridExcelCommand icon="file-excel">
+                    Export to Excel
+                </button> 
+            </div>
+        </ng-template>
+        <kendo-grid-column field="equnr" title="Equnr" [width]="80">
+            <ng-template kendoGridFilterMenuTemplate let-filter let-column="column"
+                let-filterService="filterService">
+                <kendo-grid-string-filter-menu [column]="column" [filter]="filter" [extra]="false"
+                [filterService]="filterService" operator="startswith">
+                    <kendo-filter-eq-operator></kendo-filter-eq-operator>
+                    <kendo-filter-neq-operator></kendo-filter-neq-operator>
+                    <kendo-filter-contains-operator></kendo-filter-contains-operator>
+                </kendo-grid-string-filter-menu>
+            </ng-template>
+        </kendo-grid-column>
+        <kendo-grid-column field="description" title="Description" [width]="80">
+            <ng-template kendoGridFilterMenuTemplate let-filter let-column="column"
+                let-filterService="filterService">
+                <kendo-grid-string-filter-menu [column]="column" [filter]="filter" [extra]="false"
+                [filterService]="filterService" operator="startswith">
+                    <kendo-filter-eq-operator></kendo-filter-eq-operator>
+                    <kendo-filter-neq-operator></kendo-filter-neq-operator>
+                    <kendo-filter-contains-operator></kendo-filter-contains-operator>
+                </kendo-grid-string-filter-menu>
+            </ng-template>
+        </kendo-grid-column>
+        <kendo-grid-column field="fleetName" title="Fleet Name" [width]="80">
+            <ng-template kendoGridFilterMenuTemplate let-filter let-column="column"
+                let-filterService="filterService">
+                <kendo-grid-string-filter-menu [column]="column" [filter]="filter" [extra]="false"
+                [filterService]="filterService" operator="startswith">
+                    <kendo-filter-eq-operator></kendo-filter-eq-operator>
+                    <kendo-filter-neq-operator></kendo-filter-neq-operator>
+                    <kendo-filter-contains-operator></kendo-filter-contains-operator>
+                </kendo-grid-string-filter-menu>
+            </ng-template>
+        </kendo-grid-column>
+        <kendo-grid-column field="licenseNo" title="License Number" [width]="80">
+            <ng-template kendoGridFilterMenuTemplate let-filter let-column="column"
+                let-filterService="filterService">
+                <kendo-grid-string-filter-menu [column]="column" [filter]="filter" [extra]="false"
+                [filterService]="filterService" operator="startswith">
+                    <kendo-filter-eq-operator></kendo-filter-eq-operator>
+                    <kendo-filter-neq-operator></kendo-filter-neq-operator>
+                    <kendo-filter-contains-operator></kendo-filter-contains-operator>
+                </kendo-grid-string-filter-menu>
+            </ng-template>
+        </kendo-grid-column>
+        <kendo-grid-column field="tankCapacity" title="Tank Capacity" [width]="80">
+            <ng-template kendoGridFilterMenuTemplate let-filter let-column="column"
+                let-filterService="filterService">
+                <kendo-grid-string-filter-menu [column]="column" [filter]="filter" [extra]="false"
+                [filterService]="filterService" operator="startswith">
+                    <kendo-filter-eq-operator></kendo-filter-eq-operator>
+                    <kendo-filter-neq-operator></kendo-filter-neq-operator>
+                    <kendo-filter-contains-operator></kendo-filter-contains-operator>
+                </kendo-grid-string-filter-menu>
+            </ng-template>
+        </kendo-grid-column>
+        
+        <kendo-grid-column field="manufacturer.name" title="Manufacturer Name" [width]="80">
+            <ng-template kendoGridFilterMenuTemplate let-filter let-column="column"
+                let-filterService="filterService">
+                <kendo-grid-string-filter-menu [column]="column" [filter]="filter" [extra]="false"
+                [filterService]="filterService" operator="startswith">
+                    <kendo-filter-eq-operator></kendo-filter-eq-operator>
+                    <kendo-filter-neq-operator></kendo-filter-neq-operator>
+                    <kendo-filter-contains-operator></kendo-filter-contains-operator>
+                </kendo-grid-string-filter-menu>
+            </ng-template>
+        </kendo-grid-column>
+        <kendo-grid-column field="model.name" title="Model Name" [width]="80">
+            <ng-template kendoGridFilterMenuTemplate let-filter let-column="column"
+                let-filterService="filterService">
+                <kendo-grid-string-filter-menu [column]="column" [filter]="filter" [extra]="false"
+                [filterService]="filterService" operator="startswith">
+                    <kendo-filter-eq-operator></kendo-filter-eq-operator>
+                    <kendo-filter-neq-operator></kendo-filter-neq-operator>
+                    <kendo-filter-contains-operator></kendo-filter-contains-operator>
+                </kendo-grid-string-filter-menu>
+            </ng-template>
+        </kendo-grid-column>
+        <kendo-grid-column field="site.name" title="Site Name" [width]="80">
+            <ng-template kendoGridFilterMenuTemplate let-filter let-column="column"
+                let-filterService="filterService">
+                <kendo-grid-string-filter-menu [column]="column" [filter]="filter" [extra]="false"
+                [filterService]="filterService" operator="startswith">
+                    <kendo-filter-eq-operator></kendo-filter-eq-operator>
+                    <kendo-filter-neq-operator></kendo-filter-neq-operator>
+                    <kendo-filter-contains-operator></kendo-filter-contains-operator>
+                </kendo-grid-string-filter-menu>
+            </ng-template>
+        </kendo-grid-column>
+        <kendo-grid-column field="status" title="Status" [width]="80">
+            <ng-template kendoGridFilterMenuTemplate let-filter let-column="column"
+                let-filterService="filterService">
+                <kendo-grid-string-filter-menu [column]="column" [filter]="filter" [extra]="false"
+                [filterService]="filterService" operator="startswith">
+                    <kendo-filter-eq-operator></kendo-filter-eq-operator>
+                    <kendo-filter-neq-operator></kendo-filter-neq-operator>
+                    <kendo-filter-contains-operator></kendo-filter-contains-operator>
+                </kendo-grid-string-filter-menu>
+            </ng-template>
+        </kendo-grid-column>
+        <kendo-grid-command-column title="Actions" [width]="180">
+            <ng-template kendoGridCellTemplate let-isNew="isNew">
+            <button kendoGridEditCommand [primary]="true">Edit</button>
+            <button kendoGridRemoveCommand>View</button>
+            </ng-template>
+        </kendo-grid-command-column>
+
+        <ng-template kendoPagerTemplate let-totalPages="totalPages" let-currentPage="currentPage">
+            <kendo-pager-prev-buttons></kendo-pager-prev-buttons>
+            <kendo-pager-numeric-buttons [buttonCount]="5"></kendo-pager-numeric-buttons>
+            <kendo-pager-next-buttons></kendo-pager-next-buttons>
+            <kendo-pager-info></kendo-pager-info>
+            <kendo-pager-page-sizes [pageSizes]="[10, 25, 50, 100]"></kendo-pager-page-sizes>
+            Page: {{ currentPage }}
+        </ng-template>
+        <kendo-grid-messages [pagerItemsPerPage]="'Vehicle per page'" [pagerItems]="'items'" [pagerOf]="'of'"
+            [pagerPage]="'custom Page text'">
+        </kendo-grid-messages>
+
+        <!-- vehicle export data in excel -->
+          <kendo-grid-excel 
+            fileName="VehicleList.xlsx"
+            [fetchData]="exportAllData.bind(this)"
+            >
+            <kendo-excelexport-column field="equnr" title="Equnr" >
+            </kendo-excelexport-column>  
+            
+            <kendo-excelexport-column field="description" title="Description">
+            </kendo-excelexport-column> 
+
+            <kendo-excelexport-column field="fleetName" title="Fleet Name">
+            </kendo-excelexport-column> 
+
+            <kendo-excelexport-column field="licenseNo" title="License Number">
+            </kendo-excelexport-column> 
+            
+            <kendo-excelexport-column field="tankCapacity" title="Tank Capacity">
+            </kendo-excelexport-column> 
+
+            <kendo-excelexport-column field="manufacturer.name" title="Manufacturer Name">
+            </kendo-excelexport-column> 
+
+            <kendo-excelexport-column field="model.name" title="Model Name">
+            </kendo-excelexport-column> 
+
+            <kendo-excelexport-column field="site.name" title="Site Name">
+            </kendo-excelexport-column> 
+            
+            <kendo-excelexport-column field="status" title="Status">
+            </kendo-excelexport-column> 
+        </kendo-grid-excel>
+    </kendo-grid>
+</div>
